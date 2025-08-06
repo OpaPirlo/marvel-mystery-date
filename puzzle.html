@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Puzzelpagina - Marvel Mystery Date</title>
+  <style>
+    body { background-color: #000; color: white; font-family: sans-serif; margin: 0; text-align: center; }
+    h1 { margin: 20px 0; color: #e62429; }
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 80px);
+      grid-template-rows: repeat(4, 80px);
+      justify-content: center;
+      gap: 2px;
+      margin: 20px auto;
+    }
+    .piece {
+      background-color: #333;
+      border: 1px solid #444;
+      width: 80px;
+      height: 80px;
+      background-size: cover;
+      cursor: pointer;
+    }
+    .hint {
+      margin-top: 30px;
+      padding: 1em;
+      background: #111;
+      border: 1px solid #e62429;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+    }
+    #character {
+      width: 150px;
+      animation: dance 2s infinite;
+      margin-top: 30px;
+    }
+    @keyframes dance {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      50% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🧳 Vind de koffers!</h1>
+
+  <audio autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/6677" type="audio/mpeg" />
+    Je browser ondersteunt geen audio.
+  </audio>
+
+  <div class="puzzle-grid" id="puzzle">
+    <!-- Voorbeeld met 3 koffers -->
+    <div class="piece" onclick="showHint('Zonnebril: Het gaat zonnig worden ☀️😎')"></div>
+    <div class="piece"></div>
+    <div class="piece" onclick="showHint('Badkleding: Je gaat nat worden. Nee echt, zeker weten. 💦👙')"></div>
+    <div class="piece"></div>
+    <div class="piece" onclick="showHint('Paspoort: Venom heeft honger... en we rijden de grens over 🛂🕷️')"></div>
+    <!-- Voeg zelf meer toe met onclick -->
+    <!-- Overige lege puzzelstukjes -->
+    <script>
+      const container = document.getElementById('puzzle');
+      while (container.children.length < 32) {
+        const piece = document.createElement('div');
+        piece.className = 'piece';
+        container.appendChild(piece);
+      }
+    </script>
+  </div>
+
+  <div class="hint" id="hintBox"></div>
+
+  <img id="character" src="https://media.giphy.com/media/3o7abAhvUQbzoRg3mU/giphy.gif" alt="Dansend figuurtje">
+
+  <script>
+    function showHint(text) {
+      const box = document.getElementById("hintBox");
+      box.innerText = text;
+      box.style.display = "block";
+    }
+  </script>
+</body>
+</html>
